@@ -1,0 +1,52 @@
+{
+  "countries": [
+    {
+      "id": 1,
+      "name": "Brazil",
+      "population": 214.3,
+      "flag": "https://www.countryflags.com/wp-content/uploads/brazil-flag-png-large.png"
+    },
+    {
+      "id": 2,
+      "name": "Canada",
+      "population": 38.25,
+      "flag": "https://www.countryflags.com/wp-content/uploads/canada-flag-png-large.png"
+    },
+    {
+      "id": 3,
+      "name": "United States",
+      "population": 331.9,
+      "flag": "https://www.countryflags.com/wp-content/uploads/united-states-of-america-flag-png-large.png"
+    },
+    {
+      "id": 4,
+      "name": "Japan",
+      "population": 125.7,
+      "flag": "https://www.countryflags.com/wp-content/uploads/japan-flag-png-large.png"
+    },
+    {
+      "name": "Australia",
+      "population": "25.69",
+      "flag": "https://www.countryflags.com/wp-content/uploads/flag-jpg-xl-9-1536x768.jpg",
+      "id": 5
+    },
+    {
+      "name": "Germany",
+      "population": "83.2",
+      "flag": "https://www.countryflags.com/wp-content/uploads/germany-flag-png-large.png",
+      "id": 6
+    },
+    {
+      "name": "South Korea",
+      "population": "51.74",
+      "flag": "https://www.countryflags.com/wp-content/uploads/south-korea-flag-png-large.png",
+      "id": 7
+    },
+    {
+      "name": "Turkey ",
+      "population": "84.78",
+      "flag": "https://www.countryflags.com/wp-content/uploads/turkey-flag-png-large.png",
+      "id": 8
+    }
+  ]
+}
