@@ -34,3 +34,9 @@ Resources
 - Folder hooks
 - Standard useName
 - useFetch
+
+### Refactoring the Post
+- The same hook
+- Create a new useEffect
+- callFetch to fetch data
+- httpConfig

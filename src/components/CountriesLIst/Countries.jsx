@@ -8,10 +8,10 @@ import { useFetch } from "../../hooks/useFetch";
 const urlBase = "http://localhost:3000/countries"
 
 export function Countries() {
-  const [/*countries*/, setCountries] = useState([]);
+  const [/*countries*/, /*setCountries*/] = useState([]);
 
   //4- custom hook
-  const { data: myCountries } = useFetch(urlBase)
+  const { data: myCountries, httpConfig } = useFetch(urlBase)
 
   const [name, setName] = useState(''); 
   const [population, setPopulation] = useState('');
@@ -32,7 +32,7 @@ export function Countries() {
   // }, []);
 
   //2- Add countries
-  const handleSumbmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const country = {
@@ -41,23 +41,26 @@ export function Countries() {
       flag
     }
     
-    const response = await fetch(urlBase, {
-      method: "POST", 
-      headers: {
-        "Content-Type": "application/json"
-      }, 
-      body: JSON.stringify(country)
-    }) 
+    // const response = await fetch(urlBase, {
+    //   method: "POST", 
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   }, 
+    //   body: JSON.stringify(country)
+    // }) 
 
-    if(!response.ok) {
-      console.error("Failed to add country");
-      return; 
-    }
+    // if(!response.ok) {
+    //   console.error("Failed to add country");
+    //   return; 
+    // }
 
-    //3- Loading Dynamic
-    const addedProduct = await response.json()
+    // //3- Loading Dynamic
+    // const addedProduct = await response.json()
 
-    setCountries((prevProducts) => [...prevProducts, addedProduct])
+    // setCountries((prevProducts) => [...prevProducts, addedProduct])
+
+    // 5 - Refactoring the Post 
+    httpConfig(country, "POST")
 
     //Reset states of input
     setName("")
@@ -72,7 +75,7 @@ export function Countries() {
         <div className="add-country">
           <form
             autoComplete="off"
-            onSubmit={handleSumbmit}
+            onSubmit={handleSubmit}
             className="form-container"
           >
             <div>
