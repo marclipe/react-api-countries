@@ -7,31 +7,40 @@ export const useFetch = (url) => {
   // 5 d-Refactoring the POST
   const [config, setConfig] = useState(null);
   const [method, setMethod] = useState(null);
-  const [callFetch, setCallFetch] = useState(false); 
+  const [callFetch, setCallFetch] = useState(false);
 
-  const httpConfig = function(data, method) {
-    if(method === "POST") {
+  // 6 - Loading
+  const [loading, setLoading] = useState(false);
+
+  const httpConfig = function (data, method) {
+    if (method === "POST") {
       setConfig({
         method,
         headers: {
-          "Content-type": "application/json"
-        }, 
-        body: JSON.stringify(data)
-      })
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       // changing my method
-      setMethod(method)
+      setMethod(method);
     }
-  }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // 6 - Loading
+        setLoading(true);
+
         const response = await fetch(url);
 
         const json = await response.json();
 
         setData(json);
+
+        // 6 - Loading
+        setLoading(false);
       } catch (error) {
         console.error("ERROR BRO!", error);
       }
@@ -44,17 +53,18 @@ export const useFetch = (url) => {
   useEffect(() => {
     const httpRequest = async () => {
       if (method === "POST") {
-        let fetchOptions = [url, config]; 
+        let fetchOptions = [url, config];
 
-        const response = await fetch(...fetchOptions) 
+        const response = await fetch(...fetchOptions);
 
-        const json = await response.json()
-        setCallFetch(json)
-      }   
+        const json = await response.json();
+        setCallFetch(json);
+      }
     };
 
-    httpRequest()
-  }, [config, method, url])
+    httpRequest();
+  }, [config, method, url]);
 
-  return { data, httpConfig };
+  // 6 - Loading
+  return { data, httpConfig, loading };
 }

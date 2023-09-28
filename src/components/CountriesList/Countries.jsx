@@ -1,9 +1,10 @@
-import "../CountriesLIst/styles.css";
+import "./styles.css";
 import '../../global.css'
 import { useState } from 'react'
 
 //4- custom hook
 import { useFetch } from "../../hooks/useFetch";
+import { Loading } from "../Loading/Loading";
 
 const urlBase = "http://localhost:3000/countries"
 
@@ -11,7 +12,7 @@ export function Countries() {
   const [/*countries*/, /*setCountries*/] = useState([]);
 
   //4- custom hook
-  const { data: myCountries, httpConfig } = useFetch(urlBase)
+  const { data: myCountries, httpConfig, loading } = useFetch(urlBase)
 
   const [name, setName] = useState(''); 
   const [population, setPopulation] = useState('');
@@ -71,7 +72,7 @@ export function Countries() {
   return (
     <section>
       <header className="header-container">
-        <h1>Countries of the World!</h1>
+        <h1>Countries of the World! &#x1F30E;</h1>
         <div className="add-country">
           <form
             autoComplete="off"
@@ -82,6 +83,7 @@ export function Countries() {
               <label>
                 Name:
                 <input
+                  className="input-text"
                   type="text"
                   value={name}
                   name="name"
@@ -93,6 +95,7 @@ export function Countries() {
               <label>
                 Population:
                 <input
+                  className="input-text"
                   type="text"
                   value={population}
                   name="population"
@@ -104,6 +107,7 @@ export function Countries() {
               <label>
                 Flag:
                 <input
+                  className="input-text"
                   type="text"
                   value={flag}
                   name="flag"
@@ -112,22 +116,27 @@ export function Countries() {
               </label>
             </div>
             <div>
-              <input type="submit" value="Criar" />
+              <input className="button" type="submit" value="Criar" />
             </div>
           </form>
         </div>
       </header>
 
       <div className="container-card">
-        <ul className="grid-container">
-          {myCountries && myCountries.map((country) => (
-            <li key={country.id} className="grid-item">
-              <h3>{country.name} </h3>
-              <p>Population - {country.population} million </p>
-              <img src={country.flag} alt="" />
-            </li>
-          ))}
-        </ul>
+        {/* // 6 - Loading */}
+        {loading && <Loading />}
+        {!loading &&
+          <ul className="grid-container">
+            {myCountries &&
+              myCountries.map((country) => (
+                <li key={country.id} className="grid-item">
+                  <h3>{country.name} </h3>
+                  <p>Population - {country.population} million </p>
+                  <img src={country.flag} alt="" />
+                </li>
+              ))}
+          </ul>
+        }
       </div>
     </section>
   );

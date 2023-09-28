@@ -40,3 +40,8 @@ Resources
 - Create a new useEffect
 - callFetch to fetch data
 - httpConfig
+
+### State of Loading 
+- An interval between requests and the receipt of responses
+- To users understand that loading
+- Identify when it starts and when it ends
