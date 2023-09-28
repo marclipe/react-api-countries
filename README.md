@@ -45,3 +45,11 @@ Resources
 - An interval between requests and the receipt of responses
 - To users understand that loading
 - Identify when it starts and when it ends
+
+
+### State of Loading in Post 
+- Block undue actions as in POST
+- Remove the action of adding other item, while the request still not finalized
+
+`{loading && (<input className="button" type="submit" disabled value="Please wait" />)}`
+`{!loading && (<input className="button" type="submit" value="Create" />)}`

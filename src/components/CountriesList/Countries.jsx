@@ -116,7 +116,18 @@ export function Countries() {
               </label>
             </div>
             <div>
-              <input className="button" type="submit" value="Criar" />
+              {/* 7- state of loading in post */}
+              {loading && (
+                <input
+                  className="button"
+                  type="submit"
+                  disabled
+                  value="Please wait"
+                />
+              )}
+              {!loading && (
+                <input className="button" type="submit" value="Create" />
+              )}
             </div>
           </form>
         </div>
@@ -125,7 +136,7 @@ export function Countries() {
       <div className="container-card">
         {/* // 6 - Loading */}
         {loading && <Loading />}
-        {!loading &&
+        {!loading && (
           <ul className="grid-container">
             {myCountries &&
               myCountries.map((country) => (
@@ -136,7 +147,7 @@ export function Countries() {
                 </li>
               ))}
           </ul>
-        }
+        )}
       </div>
     </section>
   );
