@@ -51,6 +51,10 @@ input {
   border: 1px solid transparent;
   padding: 20px;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .add-country {
@@ -102,6 +106,13 @@ label {
   background-color: #2980b9;
 }
 
+.container-error {
+  padding: 10px 20px;
+  background-color: #3498db;
+  border-radius: 4px;
+  margin: 0 20px;
+}
+
 @media screen and (max-width: 480px) {
   .grid-container {
     grid-template-columns: repeat(1, 1fr);
@@ -109,5 +120,10 @@ label {
 
   .button  {
     margin-top: 0;
+  }
+
+  img {
+    width: 175px;
+    height: 122px;
   }
 }

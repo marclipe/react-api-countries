@@ -46,10 +46,18 @@ Resources
 - To users understand that loading
 - Identify when it starts and when it ends
 
+`const [loading, setLoading] = useState(false);`
 
 ### State of Loading in Post 
 - Block undue actions as in POST
 - Remove the action of adding other item, while the request still not finalized
 
-`{loading && (<input className="button" type="submit" disabled value="Please wait" />)}`
-`{!loading && (<input className="button" type="submit" value="Create" />)}`
+- `{loading && (<input className="button" type="submit" disabled value="Please wait" />)}`
+- `{!loading && (<input className="button" type="submit" value="Create" />)}`
+
+### Handling errors
+- try catch
+- Change a state
+- Predict various scenarios
+
+`{error && (<div className="container-error"><h3>{error}</h3></div>)}`

@@ -12,7 +12,7 @@ export function Countries() {
   const [/*countries*/, /*setCountries*/] = useState([]);
 
   //4- custom hook
-  const { data: myCountries, httpConfig, loading } = useFetch(urlBase)
+  const { data: myCountries, httpConfig, loading, error } = useFetch(urlBase)
 
   const [name, setName] = useState(''); 
   const [population, setPopulation] = useState('');
@@ -136,7 +136,12 @@ export function Countries() {
       <div className="container-card">
         {/* // 6 - Loading */}
         {loading && <Loading />}
-        {!loading && (
+        {error && (
+          <div className="container-error">
+            <h3>{error}</h3>
+          </div>
+        )}
+        {!error && (
           <ul className="grid-container">
             {myCountries &&
               myCountries.map((country) => (
