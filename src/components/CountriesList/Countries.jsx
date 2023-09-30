@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useFetch } from "../../hooks/useFetch";
 import { Loading } from "../Loading/Loading";
 
-const urlBase = "https://react-api-countries-rho.vercel.app/countries";
+const urlBase = "http://localhost:3000/countries";
 
 export function Countries() {
   const [/*countries*/, /*setCountries*/] = useState([]);
